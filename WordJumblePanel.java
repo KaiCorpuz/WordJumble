@@ -12,14 +12,20 @@ import java.awt.Graphics;
 
 //Hey man, you saved some videos from mistapotta that can help you with the panels.
 
-class WordJumblePanel extends JPanel implements ActionListener{//draws the shape\
+class WordJumblePanel extends JPanel{//draws the shape\
     //public static String answer;
     private JTextField wordLabelTextField;
+    private JTextField scoreTextField;
     private Word randWord = null;
-    //private Boolean repaint = false;
+    private JLabel qWord = null;
+    private JLabel rightAns = new JLabel("Correct!");
+    private JLabel wrongAns = new JLabel("Incorrect");
+    //private Boolean ansCorrect = false;
     final int length = 800;
     final int height = 400;
-
+    //private JLabel userScore = new JLabel(score);
+    int score = 0;
+    
     
 
     WordJumblePanel(){
@@ -32,25 +38,74 @@ class WordJumblePanel extends JPanel implements ActionListener{//draws the shape
         label.setForeground(Color.blue);
         label.setBounds(0,-140,300,300);
         add(label);
-        
+
+        JLabel printScore = new JLabel("Score: ");
+        printScore.setFont(new Font("Serif", Font.BOLD, 24));
+        printScore.setForeground(Color.blue);
+        printScore.setBounds(600,-140,300,300);
+        add(printScore);
 
         JButton checkButton = new JButton("Check");
-        //Container pane = this.getContentPane();
-        checkButton.addActionListener(this);
+        
+        checkButton.addActionListener(new ActionListener() {//This is the code for the button
+            public void actionPerformed(ActionEvent e){
+                String userAns = wordLabelTextField.getText();
+                if(randWord.checkAnswer(userAns) == true){
+                    score++;
+                    remove(qWord);
+                    System.out.println("Correct!");
+                    randWord = new Word();
+                    qWord = new JLabel(randWord.scramble());
+                    qWord.setFont(new Font("Serif", Font.BOLD, 28));
+                    qWord.setForeground(Color.blue);
+                    qWord.setBounds((length/2) - 50,0,200,400);
+                    repaint();
+                    add(qWord);
+
+                    wordLabelTextField.setText("");
+
+                    remove(wrongAns);
+                    rightAns.setFont(new Font("Serif", Font.BOLD, 28));
+                    rightAns.setForeground(Color.GREEN);
+                    rightAns.setBounds(550,75,100,100);
+                    repaint();
+                    add(rightAns);
+
+                    //String userScore = String.valueOf(score);
+                    System.out.println(score);
+
+
+                }else{ System.out.println("Incorrect");
+                    score--;
+                    remove(rightAns);
+                    wrongAns.setFont(new Font("Serif", Font.BOLD, 28));
+                    wrongAns.setForeground(Color.RED);
+                    wrongAns.setBounds(150,20,200,200);
+                    repaint();
+                    add(wrongAns);
+
+                    //String userScore = String.valueOf(score);
+                    System.out.println(score);
+                }
+                
+            }});
         checkButton.setBounds(350,300, 100,50);
         add(checkButton);
-        
 
-        JLabel wordLabel = new JLabel("Your Answer: ");
-        add(wordLabel);//prints label
        
         wordLabelTextField = new JTextField("Type here");
         wordLabelTextField.setBounds(300,100,200,50);
         wordLabelTextField.setFont(new Font("Serif", Font.BOLD, 24));
         add(wordLabelTextField);
 
-        
-        JLabel qWord = new JLabel(randWord.scramble());
+        /*
+        scoreTextField = new JTextField();
+        scoreTextField.setBounds(700,3,50,20);
+        scoreTextField.setFont(new Font("Serif", Font.BOLD, 12));
+        add(scoreTextField);
+        */ 
+
+        qWord = new JLabel(randWord.scramble());
         qWord.setFont(new Font("Serif", Font.BOLD, 28));
         qWord.setForeground(Color.blue);
         qWord.setBounds((length/2) - 50,0,200,400);
@@ -62,23 +117,8 @@ class WordJumblePanel extends JPanel implements ActionListener{//draws the shape
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         setBackground(Color.BLACK);
-
-       
-    }
+    }    
     
-    public void actionPerformed(ActionEvent e){
-        String userAns = wordLabelTextField.getText();
-        
-        System.out.println("Your Answer:"+userAns);
-        System.out.println("Correct? " + randWord.checkAnswer(userAns));
-
-       
-        //System.out.println("Correct Answer: "+ ansWord);
-
-        
-       
-    
-    }
+}
 
    
-}
