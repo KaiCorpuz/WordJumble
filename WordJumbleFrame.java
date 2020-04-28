@@ -7,9 +7,12 @@ class WordJumbleFrame extends JFrame {//the window
         setBounds(100,100,800,400);//length, height of the frame
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBackground(Color.BLACK);
+        //setBackground(Color.BLACK);
 
         WordJumblePanel myWordJumblePanel = new WordJumblePanel();
         add(myWordJumblePanel);    
+
+        //MenuPanel myMenuPanel = new MenuPanel();
+        //add(myMenuPanel);
     }
 }

@@ -3,23 +3,23 @@
     The, scramble the word
  */
 import java.util.Random;
-//import java.util.ArrayList;
-import javax.swing.JPanel;
+
 
 class Word{
     public String answer;
 
-    public Word(){
+    public Word(){//default constructor
         newAnswer();
 
     }
     
+    //picks random number 
     public static int GetNumberBetweenInclusive(int min, int max) {
         Random myRandom = new Random();
         return min + myRandom.nextInt(max-min+1);
     }  
     
-    
+    //list of words
     final String[] wordList = {"dance","guess","panel","choir","music","cut","paper","rock","banana","apple","orange","route","price","north","head","nose","falls","flip","bird","avenge",
         "alien","term","cards","table","stack","swing","quick","stare","ghost","store","light","rebel","media","canine","purple","brown","sixty","fifty","cabin","forty",
         "droid","fleet","flight","shirt","nation","crazy","rocket","tennis","foot","basket","shoe","bass","tweet","snap","fans","stick","before","lakes","meme","fight",
@@ -31,14 +31,15 @@ class Word{
         //20 words per line
 
 
-      
-   public String newAnswer(){
+    //this method picks a random word from the list above
+    public String newAnswer(){
         int randNum = GetNumberBetweenInclusive(0,wordList.length);
         answer = wordList[randNum];
         
         return answer;
     }    
 
+    //this method checks for the correct answer
     public Boolean checkAnswer(String x){
         if (x.equals(answer)){
             return true;
@@ -46,7 +47,7 @@ class Word{
         return false;
     }
     
-
+    //this methond takes the word and mixes up the letters
     public String scramble(){
         int wordLength = answer.length();
 
@@ -60,16 +61,7 @@ class Word{
         return new String(characters);
     }
     
-    /*
-    public static void main(String[] args){
-        Word randWord = new Word();
 
-        System.out.println(randWord.getAnswer());
-        System.out.println(randWord.scramble(answer));
-        
-        
-    }
-    */
     
     
 }

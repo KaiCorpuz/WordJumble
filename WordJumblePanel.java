@@ -15,17 +15,15 @@ import java.awt.Graphics;
 class WordJumblePanel extends JPanel{//draws the shape\
     //public static String answer;
     private JTextField wordLabelTextField;
-    private JTextField scoreTextField;
     private Word randWord = null;
     private JLabel qWord = null;
     private JLabel rightAns = new JLabel("Correct!");
     private JLabel wrongAns = new JLabel("Incorrect");
-    //private Boolean ansCorrect = false;
     final int length = 800;
     final int height = 400;
-    //private JLabel userScore = new JLabel(score);
-    int score = 0;
     
+    private int score = 0;
+    private JLabel userScore = null;
     
 
     WordJumblePanel(){
@@ -51,7 +49,7 @@ class WordJumblePanel extends JPanel{//draws the shape\
             public void actionPerformed(ActionEvent e){
                 String userAns = wordLabelTextField.getText();
                 if(randWord.checkAnswer(userAns) == true){
-                    score++;
+                    
                     remove(qWord);
                     System.out.println("Correct!");
                     randWord = new Word();
@@ -71,12 +69,18 @@ class WordJumblePanel extends JPanel{//draws the shape\
                     repaint();
                     add(rightAns);
 
-                    //String userScore = String.valueOf(score);
-                    System.out.println(score);
-
+                    remove(userScore);
+                    score++;
+                    String userScoreString = String.valueOf(score);
+                    userScore = new JLabel(userScoreString);
+                    userScore.setFont(new Font("Serif", Font.BOLD, 24));
+                    userScore.setForeground(Color.WHITE);
+                    userScore.setBounds(675,-140,300,300);
+                    repaint();
+                    add(userScore);
 
                 }else{ System.out.println("Incorrect");
-                    score--;
+                    
                     remove(rightAns);
                     wrongAns.setFont(new Font("Serif", Font.BOLD, 28));
                     wrongAns.setForeground(Color.RED);
@@ -84,8 +88,15 @@ class WordJumblePanel extends JPanel{//draws the shape\
                     repaint();
                     add(wrongAns);
 
-                    //String userScore = String.valueOf(score);
-                    System.out.println(score);
+                    remove(userScore);
+                    score--;
+                    String userScoreString = String.valueOf(score);
+                    userScore = new JLabel(userScoreString);
+                    userScore.setFont(new Font("Serif", Font.BOLD, 24));
+                    userScore.setForeground(Color.WHITE);
+                    userScore.setBounds(675,-140,300,300);
+                    repaint();
+                    add(userScore);
                 }
                 
             }});
@@ -98,12 +109,6 @@ class WordJumblePanel extends JPanel{//draws the shape\
         wordLabelTextField.setFont(new Font("Serif", Font.BOLD, 24));
         add(wordLabelTextField);
 
-        /*
-        scoreTextField = new JTextField();
-        scoreTextField.setBounds(700,3,50,20);
-        scoreTextField.setFont(new Font("Serif", Font.BOLD, 12));
-        add(scoreTextField);
-        */ 
 
         qWord = new JLabel(randWord.scramble());
         qWord.setFont(new Font("Serif", Font.BOLD, 28));
@@ -111,7 +116,13 @@ class WordJumblePanel extends JPanel{//draws the shape\
         qWord.setBounds((length/2) - 50,0,200,400);
         add(qWord);
 
-        
+        String userScoreString = String.valueOf(score);
+        userScore = new JLabel(userScoreString);
+        userScore.setFont(new Font("Serif", Font.BOLD, 24));
+        userScore.setForeground(Color.WHITE);
+        userScore.setBounds(675,-140,300,300);
+        add(userScore);
+
     } 
 
     public void paintComponent(Graphics g){
