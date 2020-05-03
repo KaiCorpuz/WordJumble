@@ -1,35 +1,62 @@
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-//import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+
 import java.awt.Color;
 import java.awt.Font;
-//import java.awt.Container;
-import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Graphics;
 
-//Hey man, you saved some videos from mistapotta that can help you with the panels.
+//import java.util.Timer;
+//import java.util.TimerTask;
+//import java.lang.System;
 
-class WordJumblePanel extends JPanel{//draws the shape\
-    //public static String answer;
+
+
+class WordJumblePanel extends JPanel{//draws the shape
+    
     private JTextField wordLabelTextField;
+    //private JTextField timeLabel;
     private Word randWord = null;
     private JLabel qWord = null;
     private JLabel rightAns = new JLabel("Correct!");
     private JLabel wrongAns = new JLabel("Incorrect");
+    private JLabel userScore = null;
+    private JLabel livesLabel  = null;
+    private JLabel lifeNumber = null;
+    private JLabel youLose = null;
+    
     final int length = 800;
     final int height = 400;
-    
     private int score = 0;
-    private JLabel userScore = null;
+    private int lives = 5;
     
+    //private WordTimer minTimer = null;
 
+    
     WordJumblePanel(){
-        setLayout(null);//creates specific fields for things to go.
-        randWord = new Word();
         
+        setLayout(null);//creates specific fields for things to go.
+        
+
+        livesLabel = new JLabel("Lives: ");
+        livesLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        livesLabel.setForeground(Color.blue);
+        livesLabel.setBounds(600,300,150,30);
+        add(livesLabel);
+
+        String lifeString = String.valueOf(lives);
+        lifeNumber = new JLabel(lifeString);
+        lifeNumber.setFont(new Font("Serif", Font.BOLD, 24));
+        lifeNumber.setForeground(Color.WHITE);
+        lifeNumber.setBounds(675,300,100,30);
+        add(lifeNumber);
+
+        
+        randWord = new Word();
         
         JLabel label = new JLabel("Word Jumble");
         label.setFont(new Font("Serif", Font.BOLD, 24));
@@ -47,11 +74,12 @@ class WordJumblePanel extends JPanel{//draws the shape\
         
         checkButton.addActionListener(new ActionListener() {//This is the code for the button
             public void actionPerformed(ActionEvent e){
+                
                 String userAns = wordLabelTextField.getText();
                 if(randWord.checkAnswer(userAns) == true){
                     
                     remove(qWord);
-                    System.out.println("Correct!");
+                    //System.out.println("Correct!");
                     randWord = new Word();
                     qWord = new JLabel(randWord.scramble());
                     qWord.setFont(new Font("Serif", Font.BOLD, 28));
@@ -79,7 +107,7 @@ class WordJumblePanel extends JPanel{//draws the shape\
                     repaint();
                     add(userScore);
 
-                }else{ System.out.println("Incorrect");
+                }else{ //System.out.println("Incorrect");
                     
                     remove(rightAns);
                     wrongAns.setFont(new Font("Serif", Font.BOLD, 28));
@@ -97,6 +125,27 @@ class WordJumblePanel extends JPanel{//draws the shape\
                     userScore.setBounds(675,-140,300,300);
                     repaint();
                     add(userScore);
+
+                    remove(lifeNumber);
+                    lives--;
+                    String lifeString = String.valueOf(lives);
+                    lifeNumber = new JLabel(lifeString);
+                    lifeNumber.setFont(new Font("Serif", Font.BOLD, 24));
+                    lifeNumber.setForeground(Color.WHITE);
+                    lifeNumber.setBounds(675,300,100,30);
+                    repaint();
+                    add(lifeNumber);
+
+                    if(lives == 0){
+                        removeAll();
+
+                        youLose = new JLabel("YOU LOSE!");
+                        youLose.setFont(new Font("Serif", Font.BOLD, 38));
+                        youLose.setForeground(Color.RED);
+                        youLose.setBounds(300,0,300,300);
+                        repaint();
+                        add(youLose);
+                    }
                 }
                 
             }});
@@ -122,6 +171,9 @@ class WordJumblePanel extends JPanel{//draws the shape\
         userScore.setForeground(Color.WHITE);
         userScore.setBounds(675,-140,300,300);
         add(userScore);
+
+        
+
 
     } 
 
