@@ -27,7 +27,9 @@ class Word{
         "dizzy","jumpy","quirk","quake","jokes","phase","bronze","magic","booze","capes","jumbo","shrimp","clams","sheep","horse","cream","sugar","smile","sprint","goals",
         "rabbit","itchy","bunker","number","gizmo","robot","letter","folks","woah","funky","smooth","empty","funny","freeze","sweet","salty","siege","bulls","sweat","course",
         "carrot","school","eleven","seven","three","water","pencil","eraser","wonder","super","ships","ball","wet","mad","happy","sad","moody","pen","sap","ape",
-        "try","tries","level","sand","peace","love","lead","deal","link","logs","ink","master","branch","drink","crab","fish","bubble","mirror","amaze","beat",};
+        "try","tries","level","sand","peace","love","lead","deal","link","logs","ink","master","branch","drink","crab","fish","bubble","mirror","amaze","beat",
+        "type","issue","cards","wood","deal","read","dear","fire","life","drawer","monday","animal","heaven","future","potato","circle","circus","sister","change","turtle",
+        "memory","season","strong","auto","eraser","socks","flower","danger","cool","nine","speak","valley","tomato","wheat","stone","grass","whale","later","ladder","nugget",};
         //20 words per line
 
 
@@ -47,7 +49,7 @@ class Word{
         return false;
     }
     
-    //this methond takes the word and mixes up the letters
+    //this method takes the word and mixes up the letters
     public String scramble(){
         int wordLength = answer.length();
 
