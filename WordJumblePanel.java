@@ -3,23 +3,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Graphics;
 
-//import java.util.Timer;
-//import java.util.TimerTask;
-//import java.lang.System;
-
-
 
 class WordJumblePanel extends JPanel{//draws the shape
     
     private JTextField wordLabelTextField;
-    //private JTextField timeLabel;
     private Word randWord = null;
     private JLabel qWord = null;
     private JLabel rightAns = new JLabel("Correct!");
@@ -33,8 +26,6 @@ class WordJumblePanel extends JPanel{//draws the shape
     final int height = 400;
     private int score = 0;
     private int lives = 5;
-    
-    //private WordTimer minTimer = null;
 
     
     WordJumblePanel(){
@@ -171,9 +162,6 @@ class WordJumblePanel extends JPanel{//draws the shape
         userScore.setForeground(Color.WHITE);
         userScore.setBounds(675,-140,300,300);
         add(userScore);
-
-        
-
 
     } 
 

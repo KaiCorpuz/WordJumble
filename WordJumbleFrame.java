@@ -1,6 +1,5 @@
 import javax.swing.JFrame;
 
-
 class WordJumbleFrame extends JFrame {//the window
     public WordJumbleFrame() {
         super("WordJumble");
