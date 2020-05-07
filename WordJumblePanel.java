@@ -28,6 +28,7 @@ class WordJumblePanel extends JPanel{//draws the shape
     private JLabel livesLabel  = null;
     private JLabel lifeNumber = null;
     private JLabel youLose = null;
+    private JLabel youWin = null;
     
     final int length = 800;
     final int height = 400;
@@ -107,6 +108,17 @@ class WordJumblePanel extends JPanel{//draws the shape
                     repaint();
                     add(userScore);
 
+                    if(score >= 50){
+                        removeAll();
+
+                        youWin = new JLabel("YOU WIN!");//when the player has 50+ points, they win
+                        youWin.setFont(new Font("Serif", Font.BOLD, 38));
+                        youWin.setForeground(Color.BLUE);
+                        youWin.setBounds(300,0,300,300);
+                        repaint();
+                        add(youWin);
+                    }
+
                 }else{ //System.out.println("Incorrect");
                     
                     remove(rightAns);//informs player that the guess is incorrect
@@ -149,9 +161,24 @@ class WordJumblePanel extends JPanel{//draws the shape
                 }
                 
             }});
-        checkButton.setBounds(350,300, 100,50);
+        checkButton.setBounds(400,300, 100,50);
         add(checkButton);
 
+        JButton refreshButton = new JButton("Refresh");
+        refreshButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                remove(qWord);
+                randWord = new Word();
+                qWord = new JLabel(randWord.scramble());
+                qWord.setFont(new Font("Serif", Font.BOLD, 28));
+                qWord.setForeground(Color.blue);
+                qWord.setBounds((length/2) - 50,0,200,400);
+                repaint();                    
+                add(qWord);
+            }
+        });
+        refreshButton.setBounds(300,300,100,50);
+        add(refreshButton);
        
         wordLabelTextField = new JTextField("Type here");//instantiates the text box
         wordLabelTextField.setBounds(300,100,200,50);

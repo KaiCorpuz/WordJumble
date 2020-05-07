@@ -6,10 +6,6 @@ public class WordJumble{
         myWordJumbleFrame.setVisible(true);
         JOptionPane.showMessageDialog(myWordJumbleFrame,"Welcome to WordJumble!\nUnscramble the word and earn points!");
         //a small popup is created that welcomes and tells the player what to do.
-            
 
-
-        
-        
     }
 }

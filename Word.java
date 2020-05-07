@@ -3,8 +3,6 @@
     The, scramble the word
  */
 import java.util.Random;
-
-
 class Word{
     public String answer;
 
