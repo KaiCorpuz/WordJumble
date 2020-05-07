@@ -1,4 +1,3 @@
-/* */
 import javax.swing.JOptionPane;
 public class WordJumble{    
     public static void main(String[] args) {

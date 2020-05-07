@@ -29,7 +29,11 @@ class Word{
         "carrot","school","eleven","seven","three","water","pencil","eraser","wonder","super","ships","ball","wet","mad","happy","sad","moody","pen","sap","ape",
         "try","tries","level","sand","peace","love","lead","deal","link","logs","ink","master","branch","drink","crab","fish","bubble","mirror","amaze","beat",
         "type","issue","cards","wood","deal","read","dear","fire","life","drawer","monday","animal","heaven","future","potato","circle","circus","sister","change","turtle",
-        "memory","season","strong","auto","eraser","socks","flower","danger","cool","nine","speak","valley","tomato","wheat","stone","grass","whale","later","ladder","nugget",};
+        "memory","season","strong","auto","eraser","socks","flower","danger","cool","nine","speak","valley","tomato","wheat","stone","grass","whale","later","ladder","nugget",
+        "giant","globe","false","extra","drill","drive","eight","debut","delay","cross","chest","chair","civil","clean","dozen","bench","blind","audio","below","alive",
+        "angel","angle","asset","black","white","block","boost","brain","broke","break","brake","two","chase","minus","motor","oceam","paint","party","queen","ready",
+        "rapid","print","storm","style","throw","today","thank","trial","truck","virus","visit","woman","worst","would","wound","write","voice","tight","spare","space",
+        };
         //20 words per line
 
 
