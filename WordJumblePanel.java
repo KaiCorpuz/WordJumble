@@ -10,16 +10,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Graphics;
 
-//import java.util.Timer;
-//import java.util.TimerTask;
-//import java.lang.System;
-
 
 
 class WordJumblePanel extends JPanel{//draws the shape
     
     private JTextField wordLabelTextField;
-    //private JTextField timeLabel;
     private Word randWord = null;
     private JLabel qWord = null;
     private JLabel rightAns = new JLabel("Correct!");
@@ -35,7 +30,7 @@ class WordJumblePanel extends JPanel{//draws the shape
     private int score = 0;
     private int lives = 5;
     
-    //private WordTimer minTimer = null;
+   
 
     
     WordJumblePanel(){
@@ -80,7 +75,6 @@ class WordJumblePanel extends JPanel{//draws the shape
                 if(randWord.checkAnswer(userAns) == true){
                     
                     remove(qWord);
-                    //System.out.println("Correct!");
                     randWord = new Word();
                     qWord = new JLabel(randWord.scramble());
                     qWord.setFont(new Font("Serif", Font.BOLD, 28));
@@ -119,7 +113,7 @@ class WordJumblePanel extends JPanel{//draws the shape
                         add(youWin);
                     }
 
-                }else{ //System.out.println("Incorrect");
+                }else{ 
                     
                     remove(rightAns);//informs player that the guess is incorrect
                     wrongAns.setFont(new Font("Serif", Font.BOLD, 28));
@@ -166,7 +160,7 @@ class WordJumblePanel extends JPanel{//draws the shape
 
         JButton refreshButton = new JButton("Refresh");
         refreshButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e){//this button prints a new random word if the other one is too difficult
                 remove(qWord);
                 randWord = new Word();
                 qWord = new JLabel(randWord.scramble());
