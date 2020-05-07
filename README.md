@@ -9,6 +9,8 @@ To build a similar application, the java.swing, and java.awt libraries are used 
 
 In your terminal, clone the repository to your computer, then be able to compile and run the program.
 
+The majority of the program is original work. Alot of the functionality of the program, I learned how to do online, and implemented small bits of code that other people have created, but I neglected to reference them. I tweaked the code that I found however.
+
 git clone https://github.com/KaiCorpuz/WordJumble
     javac *.java
         java WordJumble
